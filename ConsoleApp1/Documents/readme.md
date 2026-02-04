@@ -18,5 +18,5 @@ It demonstrates basic input/output operations and serves as a starting point for
 
 ### Clone the repository
 ```bash
-git clone https://github.com/your-username/MyConsoleApp.git
+git clone https://github.com/aungNyeinChan93/tutorials/tree/main/ConsoleApp1
 cd MyConsoleApp
