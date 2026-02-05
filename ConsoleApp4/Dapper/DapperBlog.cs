@@ -47,15 +47,6 @@ namespace ConsoleApp4.Dapper
         }
 
 
-
-        public void Update(string title,string desc,string author)
-        {
-            using (IDbConnection db = new SqlConnection(this._connectionStr))
-            {
-                
-            }
-        }
-
         public void ReadById(int blogId)
         {
             using (IDbConnection db = new SqlConnection(this._connectionStr))
@@ -73,6 +64,27 @@ namespace ConsoleApp4.Dapper
                 {
                     Console.WriteLine($"Blog Title is {b.Title}");
                 }
+            }
+        }
+
+        public void Update(string title, string desc, string author,int blogId)
+        {
+            using (IDbConnection db = new SqlConnection(this._connectionStr))
+            {
+                string query = @"update Tbl_Blogs 
+                set 
+                    Title = @Title,
+                    Description = @Description,
+                    AuthorName = @AuthorName
+                where Tbl_blogs.BlogId = @BlogId
+                ";
+
+                int result = db
+                    .Execute(
+                        query,
+                        new BlogDto { Title = title, Description = desc, AuthorName = author ,BlogId =blogId });
+
+                Console.WriteLine(result >= 1 ? "Update Success":"Update Fail!");
             }
         }
     }
