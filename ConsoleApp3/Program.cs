@@ -26,6 +26,7 @@ SqlCommand cmd = new SqlCommand(selectQuery,connection);
 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 adapter.Fill(tb);
 
+
 //Inset data
 string insetQuery = @"INSERT INTO [KSLH_01].[dbo].[Tbl_Blogs]
            ([Title]
@@ -57,6 +58,13 @@ insertCmd.Parameters.AddWithValue("@AuthorName",author);
 int affectRows = insertCmd.ExecuteNonQuery();
 
 Console.WriteLine(affectRows >=1 ? "Insert success":"insert fail");
+
+SqlDataReader reader = cmd.ExecuteReader();
+
+while (reader.Read())
+{
+    Console.WriteLine($"Blog Title is {reader["Title"]}");
+}
 
 connection.Close();
 
