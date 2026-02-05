@@ -1,5 +1,6 @@
 ﻿using ConsoleApp4.Models;
 using Dapper;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -85,6 +86,17 @@ namespace ConsoleApp4.Dapper
                         new BlogDto { Title = title, Description = desc, AuthorName = author ,BlogId =blogId });
 
                 Console.WriteLine(result >= 1 ? "Update Success":"Update Fail!");
+            }
+        }
+
+        public void Delete(int blogId)
+        {
+            using (IDbConnection db = new SqlConnection(this._connectionStr))
+            {
+                string query = @"delete from tbl_blogs where tbl_blogs.BlogId = @BlogId";
+
+                int result = db.Execute(query, new { BlogId = blogId });
+                Console.WriteLine(result >=1 ?  "Delete success":"Delete fail!");
             }
         }
     }
