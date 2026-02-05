@@ -54,9 +54,16 @@ namespace ConsoleApp4.Dapper
             {
                 string query = @"select * from tbl_blogs where tbl_blogs.BlogId = @BlogId";
                 //var blog = db.Query<BlogDto>(query, new {BlogId= blogId}).ToList();
-                var blog = db.Query<BlogDto>(query, new {BlogId= blogId}).FirstOrDefault();
+                BlogDto? blog = db.Query<BlogDto>(query, new {BlogId= blogId}).FirstOrDefault();
 
-                Console.WriteLine($"Blog Tile  {blog.Title} and Author Name is {blog.AuthorName}");
+                if(blog is null)
+                {
+                    Console.WriteLine("Blog Not Found!");
+                    return;
+                }
+
+                Console.WriteLine($"Blog Tile  {blog?.Title} and Author Name is {blog?.AuthorName}");
+
                 //if (blog.Count <=0)
                 //{
                 //    Console.WriteLine($"Blog Id Not found");
