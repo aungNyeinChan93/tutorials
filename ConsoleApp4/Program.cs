@@ -5,4 +5,5 @@
 DapperBlog dapperBlog = new DapperBlog();
 
 dapperBlog.Read();
+dapperBlog.Create("Test Title", "Test Desc ", "Ronaldo");
 

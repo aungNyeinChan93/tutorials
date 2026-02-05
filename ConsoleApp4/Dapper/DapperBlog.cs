@@ -26,7 +26,22 @@ namespace ConsoleApp4.Dapper
                     Console.WriteLine($"Blog Title is {blog.Title} and Author Name is {blog.AuthorName}");
                     Console.WriteLine($"Description : {blog.Description}");
                 }
+            }
+        }
 
+        public void Create(string title,string desc ,string author)
+        {
+            using (IDbConnection db = new SqlConnection(this._connectionStr))
+            {
+                string query = @"insert into tbl_blogs 
+                    values
+                        (@Title,@Description,@AuthorName,0)";
+                
+                object parameterData = new { Title =  title, Description = desc, AuthorName = author };
+
+                int affectRecord = db.Execute(query, parameterData);
+
+                Console.WriteLine(affectRecord >= 1 ? "Cretae Data success":"Create fail!");
             }
         }
     }
