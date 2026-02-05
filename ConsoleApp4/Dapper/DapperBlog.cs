@@ -53,18 +53,20 @@ namespace ConsoleApp4.Dapper
             using (IDbConnection db = new SqlConnection(this._connectionStr))
             {
                 string query = @"select * from tbl_blogs where tbl_blogs.BlogId = @BlogId";
-                var blog = db.Query<BlogDto>(query, new {BlogId= blogId}).ToList();
+                //var blog = db.Query<BlogDto>(query, new {BlogId= blogId}).ToList();
+                var blog = db.Query<BlogDto>(query, new {BlogId= blogId}).FirstOrDefault();
 
-                if(blog.Count <=0)
-                {
-                    Console.WriteLine($"Blog Id Not found");
-                    return;
-                };
+                Console.WriteLine($"Blog Tile  {blog.Title} and Author Name is {blog.AuthorName}");
+                //if (blog.Count <=0)
+                //{
+                //    Console.WriteLine($"Blog Id Not found");
+                //    return;
+                //};
 
-                foreach (var b in blog)
-                {
-                    Console.WriteLine($"Blog Title is {b.Title}");
-                }
+                //foreach (var b in blog)
+                //{
+                //    Console.WriteLine($"Blog Title is {b.Title}");
+                //}
             }
         }
 
