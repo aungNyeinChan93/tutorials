@@ -37,11 +37,42 @@ namespace ConsoleApp4.Dapper
                     values
                         (@Title,@Description,@AuthorName,0)";
                 
-                object parameterData = new { Title =  title, Description = desc, AuthorName = author };
+                //object parameterData = new { Title =  title, Description = desc, AuthorName = author };
+                var newBlog = new BlogDto() { Title = title,Description = desc ,AuthorName = author};
 
-                int affectRecord = db.Execute(query, parameterData);
+                int affectRecord = db.Execute(query, newBlog);
 
                 Console.WriteLine(affectRecord >= 1 ? "Cretae Data success":"Create fail!");
+            }
+        }
+
+
+
+        public void Update(string title,string desc,string author)
+        {
+            using (IDbConnection db = new SqlConnection(this._connectionStr))
+            {
+                
+            }
+        }
+
+        public void ReadById(int blogId)
+        {
+            using (IDbConnection db = new SqlConnection(this._connectionStr))
+            {
+                string query = @"select * from tbl_blogs where tbl_blogs.BlogId = @BlogId";
+                var blog = db.Query<BlogDto>(query, new {BlogId= blogId}).ToList();
+
+                if(blog.Count <=0)
+                {
+                    Console.WriteLine($"Blog Id Not found");
+                    return;
+                };
+
+                foreach (var b in blog)
+                {
+                    Console.WriteLine($"Blog Title is {b.Title}");
+                }
             }
         }
     }
