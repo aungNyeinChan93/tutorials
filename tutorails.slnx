@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="ClassLibrary1/ClassLibrary1.csproj" Id="9af877e1-f6d3-40b1-a643-c2028852c921" />
   <Project Path="ConsoleApp1/ConsoleApp1.csproj" />
   <Project Path="ConsoleApp2/ConsoleApp2.csproj" Id="7934c75a-6cf5-4ab2-96f0-21042bdab229" />
   <Project Path="ConsoleApp3/ConsoleApp3.csproj" Id="b83c7d8a-9b69-4977-95f1-756d6c241d10" />
@@ -6,4 +7,5 @@
   <Project Path="ConsoleApp5/ConsoleApp5.csproj" Id="2b060091-149b-4006-820f-2e7c16a52ae1" />
   <Project Path="ConsoleApp6/ConsoleApp6.csproj" Id="a5d4a77b-3546-438d-ba90-9e9d9b444cb7" />
   <Project Path="ConsoleApp7/ConsoleApp7.csproj" Id="23f88770-39a0-469a-a8fd-114875d665d9" />
+  <Project Path="Tuto_01.ConsoleApp8/Tuto_01.ConsoleApp8.csproj" Id="ec0f4e70-a800-4ffd-974a-dcd1dae1e612" />
 </Solution>
